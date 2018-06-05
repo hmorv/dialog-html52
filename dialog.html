@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dialog Demo</title>
+	<style>
+		dialog {
+			padding: 3rem;
+			border-radius: 4px;
+			border: none;
+			box-shadow: 0 4px 6px lightgray;
+			transition: transform .5s;
+		}
+
+		::backdrop {
+			background: rgba(black, .5);
+		}
+	</style>
+</head>
+<body>
+	<button class="open-modal">Open Modal</button>
+	
+	<dialog>
+		I'm native :D
+		<button class="close-modal">Close Modal</button>
+	</dialog>
+
+	<script>
+		const modal = document.querySelector('dialog');
+		const openBtn = document.querySelector('.open-modal');
+		const closeBtn = document.querySelector('.close-modal');
+
+		openBtn.addEventListener("click", () => {modal.showModal();});
+		closeBtn.addEventListener("click", () => {
+			modal.close('data sent to modal');
+			alert(`modal says: ${modal.returnValue}`);
+		});
+	</script>
+
+</body>
+</html>
